@@ -1,15 +1,18 @@
 #include <Adafruit_NeoPixel.h>
 #define dataPin 3
 #define numPixels 36
-
 Adafruit_NeoPixel ring = Adafruit_NeoPixel(numPixels, dataPin, NEO_RGB + NEO_KHZ800);
 int i = 0;
+
+#define buttonPin	2
 
 void setup()
 {
   ring.begin();
   ring.clear();
   ring.show();
+  
+  pinMode(buttonPin, INPUT);
   
   Serial.begin(9600);
 }
