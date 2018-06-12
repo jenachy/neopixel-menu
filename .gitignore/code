@@ -1,1 +1,42 @@
+#include <Adafruit_NeoPixel.h>
+#define dataPin 3
+#define numPixels 36
 
+Adafruit_NeoPixel ring = Adafruit_NeoPixel(numPixels, dataPin, NEO_RGB + NEO_KHZ800);
+int i = 0;
+
+void setup()
+{
+  ring.begin();
+  ring.clear();
+  ring.show();
+  
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  //redfill();
+  //chasingDot();
+}
+
+/*-----CUSTOM LOOPS-----*/
+
+void redfill()
+{
+  for(i=0; i<=35; i++){
+    ring.setPixelColor(i, 0, 255, 0);	//RED
+    ring.show();
+    delay(50);
+  }
+}
+
+void chasingDot()
+{
+  for(i=0; i<=36; i++){
+    ring.setPixelColor(i, 0, 255, 0);	//RED
+    ring.setPixelColor(i-1, 0, 0, 0);	//CLEAR
+    ring.show();
+    delay(50);
+  }
+}
